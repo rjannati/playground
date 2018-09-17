@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="playground.Views.SeparatorView">
+    <ContentView.Content>
+        <BoxView 
+            Color="#DDDDDD" 
+            Opacity=".5" 
+            HeightRequest="1"
+            Margin="0, 32, 0, 16" VerticalOptions="Start"/>
+    </ContentView.Content>
+</ContentView>

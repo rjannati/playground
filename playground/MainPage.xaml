@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:playground" 
+    xmlns:localeffects="clr-namespace:playground.Effects" 
+    xmlns:controls="clr-namespace:playground.Controls" 
+    xmlns:views="clr-namespace:playground.Views" 
+    xmlns:design="clr-namespace:playground;assembly=playground"
+    x:Class="playground.MainPage" BackgroundColor="White" Title="Test Page"
+    BindingContext="{x:Static design:ViewModelLocator.DesignMainViewModel}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="NHaasGroteskTXStd-75Bd.otf#NHaasGroteskTXStd-75Bd" />
+                <On Platform="iOS" Value="NHaasGroteskTXStd-75Bd" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="RegularFont">
+                <On Platform="Android" Value="NHaasGroteskTXStd-55Rg.otf#NHaasGroteskTXStd-55Rg" />
+                <On Platform="iOS" Value="NHaasGroteskTXStd-55Rg" />
+            </OnPlatform>
+            <Color x:Key="GrayLevel9">#999999</Color>
+            <Color x:Key="GrayLevel7">#777777</Color>
+            <Color x:Key="AppBlue">#1199EE</Color>
+            <Style x:Key="Header1" TargetType="controls:EnhancedLabel">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
+                <Setter Property="TextColor" Value="#000000" />
+                <Setter Property="LineHeight" Value="1.2" />
+            </Style>
+            <Style x:Key="DetailsTextStyle" TargetType="controls:EnhancedLabel">
+                <Setter Property="FontFamily" Value="{StaticResource RegularFont}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="#000000" />
+                <Setter Property="LineHeight" Value="1.2" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="InventoryCountStyle" TargetType="controls:EnhancedLabel">
+                <Setter Property="FontFamily" Value="{StaticResource RegularFont}" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="#000000" />
+                <Setter Property="LineHeight" Value="1.2" />
+            </Style>
+            <Style x:Key="InventoryCountLabelStyle" TargetType="controls:EnhancedLabel">
+                <Setter Property="FontFamily" Value="{StaticResource RegularFont}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="{StaticResource GrayLevel7}" />
+                <Setter Property="LineHeight" Value="1.2" />
+            </Style>
+            <Style x:Key="SeriesSubheaderStyle" TargetType="controls:EnhancedLabel">
+                <Setter Property="FontFamily" Value="{StaticResource RegularFont}" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="{StaticResource GrayLevel9}"/>
+                <Setter Property="LineHeight" Value="1.3" />
+            </Style>
+            <Style x:Key="SeriesPrimaryLabelStyle" TargetType="controls:EnhancedLabel">
+                <Setter Property="FontFamily" Value="{StaticResource RegularFont}" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="LineHeight" Value="1.4" />
+            </Style>
+            <Style x:Key="SeriesSecondaryLabelStyle" TargetType="controls:EnhancedLabel">
+                <Setter Property="FontFamily" Value="{StaticResource RegularFont}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="{StaticResource GrayLevel7}" />
+                <Setter Property="LineHeight" Value="1.4" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+            <ScrollView.Content>
+                <!-- Main Layout Grid -->
+                <Grid Margin="20, 20, 20, 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <!-- Item Details Header -->
+                    <Grid BackgroundColor="Transparent" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" CornerRadius="10" Padding="0" HasShadow="false" IsClippedToBounds="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <!-- TODO:  INSERT IMAGE HERE !!!! -->
+                            <BoxView BackgroundColor="Green" />
+                        </Frame>
+                        <controls:EnhancedLabel Grid.Row="0" Grid.Column="1" Text="Heathland Collection Tile" Style="{StaticResource Header1}" LineBreakMode="WordWrap" />
+                        <controls:EnhancedLabel Grid.Row="1" Grid.Column="1" Text="Item No. SEQMERANOBLK" FontSize="14" TextColor="#999999" LineHeight="1.2" VerticalTextAlignment="Center" />
+                        <Frame Grid.Row="2" Grid.Column="1" CornerRadius="8" Padding="0" BackgroundColor="{StaticResource AppBlue}" HasShadow="false" VerticalOptions="Center" HorizontalOptions="Start">
+                            <Label Margin="9, 0, 9, 0" Text="$9.99 / sq ft" FontSize="12" TextColor="White" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                            </Label>
+                        </Frame>
+                        <views:SeparatorView Grid.Row="3" Grid.ColumnSpan="2" />
+                    </Grid>
+                    <!-- Inventory Section -->
+                    <Grid Grid.Row="1" IsVisible="false">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <controls:EnhancedLabel Grid.Row="0" Grid.Column="0" Text="Inventory" Style="{StaticResource Header1}" />
+                        <Button Text="See All" Grid.Row="0" Grid.Column="1" HorizontalOptions="End" />
+                        <controls:EnhancedLabel Text="125 - Anaheim Branch" Grid.Row="1" Grid.Column="0" FontSize="16" TextColor="{StaticResource GrayLevel7}" />
+                        <controls:EnhancedLabel Text="100,000,000.00 sq ft" Grid.Row="2" Grid.Column="0" Style="{StaticResource InventoryCountStyle}" />
+                        <controls:EnhancedLabel Text="98,000 sq ft" Grid.Row="2" Grid.Column="1" Style="{StaticResource InventoryCountStyle}" />
+                        <controls:EnhancedLabel Text="20,000 sq ft" Grid.Row="4" Grid.Column="0" Style="{StaticResource InventoryCountStyle}" />
+                        <controls:EnhancedLabel Text="Available" Grid.Row="3" Grid.Column="0" Style="{StaticResource InventoryCountLabelStyle}" />
+                        <controls:EnhancedLabel Text="On Hand" Grid.Row="3" Grid.Column="1" Style="{StaticResource InventoryCountLabelStyle}" />
+                        <controls:EnhancedLabel Text="On Order" Grid.Row="5" Grid.Column="0" Style="{StaticResource InventoryCountLabelStyle}" />
+                        <views:SeparatorView Grid.Row="6" Grid.ColumnSpan="2" />
+                    </Grid>
+                    <!-- Product Details Section -->
+                    <Grid Grid.Row="2" BackgroundColor="White" Margin="0, 0, 0, 16" IsVisible="false">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <!-- Row Shading -->
+                        <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#F7F7F7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                        <BoxView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#F7F7F7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                        <!-- Labels -->
+                        <controls:EnhancedLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Product Details" Style="{StaticResource Header1}" />
+                        <ContentView Padding="5,0,0,0" Grid.Row="1" Grid.Column="0">
+                            <controls:EnhancedLabel Text="Material" Style="{StaticResource DetailsTextStyle}" />
+                        </ContentView>
+                        <ContentView Padding="5,0,0,0" Grid.Row="2" Grid.Column="0">
+                            <controls:EnhancedLabel Text="Series Name" Style="{StaticResource DetailsTextStyle}" />
+                        </ContentView>
+                        <ContentView Padding="5,0,0,0" Grid.Row="3" Grid.Column="0">
+                            <controls:EnhancedLabel Text="Actual Size" Style="{StaticResource DetailsTextStyle}" />
+                        </ContentView>
+                        <ContentView Padding="5,0,0,0" Grid.Row="4" Grid.Column="0">
+                            <controls:EnhancedLabel Text="Shade Variation" Style="{StaticResource DetailsTextStyle}" />
+                        </ContentView>
+                        <ContentView Padding="5,0,0,0" Grid.Row="5" Grid.Column="0">
+                            <controls:EnhancedLabel Text="Country of Origin" Style="{StaticResource DetailsTextStyle}" />
+                        </ContentView>
+                        <!-- Bound Controls -->
+                        <ContentView Grid.Row="1" Grid.Column="1" Padding="0,0,5,0">
+                            <controls:EnhancedLabel Text="Porcelain" Style="{StaticResource DetailsTextStyle}" HorizontalOptions="End" />
+                        </ContentView>
+                        <ContentView Grid.Row="2" Grid.Column="1" Padding="0,0,5,0">
+                            <controls:EnhancedLabel Text="Moonstone" Style="{StaticResource DetailsTextStyle}" HorizontalOptions="End" />
+                        </ContentView>
+                        <ContentView Grid.Row="3" Grid.Column="1" Padding="0,0,5,0">
+                            <controls:EnhancedLabel Text="12 1/2&quot; x 12 1/2&quot; x 3/4&quot;" Style="{StaticResource DetailsTextStyle}" HorizontalOptions="End" />
+                        </ContentView>
+                        <ContentView Grid.Row="4" Grid.Column="1" Padding="0,0,5,0">
+                            <controls:EnhancedLabel Text="Graphite" Style="{StaticResource DetailsTextStyle}" HorizontalOptions="End" />
+                        </ContentView>
+                        <ContentView Grid.Row="5" Grid.Column="1" Padding="0,0,5,0">
+                            <controls:EnhancedLabel Text="Made in Turkey" Style="{StaticResource DetailsTextStyle}" HorizontalOptions="End" />
+                        </ContentView>
+                    </Grid>
+                    
+                    
+                    <Grid Grid.Row="3" IsVisible="true">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                            <BoxView Grid.Row="0" Grid.ColumnSpan="2">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+                        
+                            <BoxView Grid.Row="1" Grid.ColumnSpan="2">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+                       
+                            
+                            <controls:EnhancedLabel Text="Tearsheet"
+                                Grid.Row="0" Grid.Column="0"
+                                VerticalOptions="Center"
+                                FontFamily="{StaticResource RegularFont}"
+                                LineHeight="1.2"
+                                FontSize="16"
+                                TextColor="{StaticResource AppBlue}" /> 
+                            
+                            <BoxView
+                                Grid.Row="0" Grid.Column="1"
+                                HeightRequest="32" WidthRequest="32" 
+                                BackgroundColor="Red"
+                                VerticalOptions="Center"
+                                HorizontalOptions="EndAndExpand"/>
+                                
+                        <BoxView Grid.Row="1" Grid.ColumnSpan="2"
+                                 HeightRequest="1" 
+                                 BackgroundColor="#e7e7e7"
+                                 HorizontalOptions="FillAndExpand"/>
+                        
+                            <controls:EnhancedLabel
+                                Grid.Row="2" Grid.Column="0"
+                                VerticalOptions="Center"
+                                FontFamily="{StaticResource RegularFont}"
+                                FontSize="16"
+                                LineHeight="1.2"
+                                Text="Selling Summary"  
+                                TextColor="{StaticResource AppBlue}" />
+
+                            <BoxView
+                                Grid.Row="2" Grid.Column="1"
+                                HeightRequest="32" WidthRequest="32" 
+                                BackgroundColor="Red" 
+                                HorizontalOptions="EndAndExpand"/>
+                        
+                        <views:SeparatorView Grid.Row="3" Grid.ColumnSpan="2" />
+                    </Grid>
+                    
+                    <Grid>
+                        
+                    </Grid>
+                    <!-- Tearsheet and Selling Summary TO FIX -->
+                    <!--<Grid Grid.Row="3" IsVisible="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <controls:EnhancedLabel Grid.Row="0" Text="Tearsheet" VerticalOptions="Center" TextColor="{StaticResource AppBlue}" />
+                        <BoxView Grid.Row="0" Grid.Column="1" 
+                                 HeightRequest="32" WidthRequest="32" BackgroundColor="Red" 
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="End" Margin="0,0,5,0"/>
+                        
+                        <ContentView Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
+                            <BoxView HeightRequest="1" BackgroundColor="#e7e7e7" VerticalOptions="Start"/>
+                        </ContentView>
+                        
+                        <controls:EnhancedLabel Grid.Row="2" Grid.Column="0" Text="Selling Summary" VerticalOptions="Center" TextColor="{StaticResource AppBlue}" />
+
+                        <BoxView Grid.Row="2" Grid.Column="1" 
+                                 HeightRequest="32" WidthRequest="32" 
+                                 BackgroundColor="Red" VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,5,0" />
+                        
+                        <views:SeparatorView Grid.Row="3" Grid.ColumnSpan="2"/>
+                    </Grid>-->
+                    
+                    <!-- In This Series -->
+                    <Grid Grid.Row="4" IsVisible="false">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <controls:EnhancedLabel Grid.Row="0" Grid.Column="0"  Text="In This Series" Style="{StaticResource Header1}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Button Text="See All" Grid.Row="0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" />
+
+                        <!-- TODO: Custom Control -->
+                        
+
+                        
+                        <controls:RepeaterView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding GroupedItems}" Orientation="Vertical" Margin="0,0,-20,0">
+                            <controls:RepeaterView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Label Text="{Binding Group}"/>
+                                        <ScrollView Orientation="Horizontal">
+                                            <controls:RepeaterView ItemsSource="{Binding Items}" Orientation="Horizontal">
+                                                <controls:RepeaterView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackLayout Margin="5">
+                                                            <BoxView BackgroundColor="{Binding BackgroundColor}" HeightRequest="100" WidthRequest="100">
+                                                            </BoxView>
+                                                                <Label Text="{Binding PrimaryText}" />
+                                                                <Label Text="{Binding SecondaryText}" />
+                                                            </StackLayout>
+                                                    </DataTemplate>
+                                                </controls:RepeaterView.ItemTemplate>
+                                            </controls:RepeaterView>
+                                        </ScrollView>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </controls:RepeaterView.ItemTemplate>
+                        </controls:RepeaterView>
+                        
+                    </Grid>
+                </Grid>
+            </ScrollView.Content>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
